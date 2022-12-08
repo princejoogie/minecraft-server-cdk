@@ -1,6 +1,7 @@
 {
   "name": "minecraft-server-cdk",
   "license": "MIT",
+  "author": "princejoogie",
   "version": "0.1.0",
   "bin": {
     "minecraft-server-cdk": "bin/minecraft-server-cdk.js"

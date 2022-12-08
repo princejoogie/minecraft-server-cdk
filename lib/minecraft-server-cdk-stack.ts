@@ -18,6 +18,8 @@ export class MinecraftServerCdkStack extends Stack {
   private vpc: ec2.IVpc;
   private efsSG: ec2.SecurityGroup;
   private minecraftSG: ec2.SecurityGroup;
+  private mcRconSG: ec2.SecurityGroup;
+  private sshSG: ec2.SecurityGroup;
   private cluster: ecs.Cluster;
 
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -44,8 +46,8 @@ export class MinecraftServerCdkStack extends Stack {
     });
 
     this.minecraftSG = this.efsSecGroup("minecraft", 25565);
-    this.efsSecGroup("mcrcon", 25575);
-    this.efsSecGroup("ssh", 25565);
+    this.mcRconSG = this.efsSecGroup("mcrcon", 25575);
+    this.sshSG = this.efsSecGroup("ssh", 25565);
   };
 
   efsSecGroup = (name: string, port: number) => {
@@ -113,7 +115,7 @@ export class MinecraftServerCdkStack extends Stack {
       taskDefinition: this.createTask(name, guild, operators, type),
       assignPublicIp: true,
       desiredCount: 1,
-      securityGroups: [this.minecraftSG],
+      securityGroups: [this.minecraftSG, this.mcRconSG, this.sshSG],
       propagateTags: ecs.PropagatedTagSource.SERVICE,
       platformVersion: ecs.FargatePlatformVersion.VERSION1_4,
     });
