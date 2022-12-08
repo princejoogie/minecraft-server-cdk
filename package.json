@@ -1,5 +1,6 @@
 {
   "name": "minecraft-server-cdk",
+  "license": "MIT",
   "version": "0.1.0",
   "bin": {
     "minecraft-server-cdk": "bin/minecraft-server-cdk.js"
@@ -24,6 +25,7 @@
   "dependencies": {
     "aws-cdk-lib": "2.54.0",
     "constructs": "^10.0.0",
+    "dotenv": "^16.0.3",
     "source-map-support": "^0.5.21"
   }
 }
