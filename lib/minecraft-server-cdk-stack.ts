@@ -172,10 +172,16 @@ export class MinecraftServerCdkStack extends Stack {
       environment: {
         EULA: "TRUE",
         OPS: operators,
+        VERSION: "1.18.2",
+        SERVER_NAME: "joogie",
+        MOTD: "joogie's server for degens",
+        ONLINE_MODE: "false",
         ALLOW_NETHER: "true",
         ENABLE_COMMAND_BLOCK: "true",
+        ENABLE_RCON: "true",
         MAX_TICK_TIME: "60000",
         MAX_MEMORY: "3600M",
+        MAX_PLAYERS: "50",
         TYPE: type,
       },
       logging: ecs.LogDrivers.awsLogs({
