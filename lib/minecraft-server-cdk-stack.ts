@@ -112,7 +112,7 @@ export class MinecraftServerCdkStack extends Stack {
       cluster: this.cluster,
       taskDefinition: this.createTask(name, guild, operators, type),
       assignPublicIp: true,
-      desiredCount: 0,
+      desiredCount: 1,
       securityGroups: [this.minecraftSG],
       propagateTags: ecs.PropagatedTagSource.SERVICE,
       platformVersion: ecs.FargatePlatformVersion.VERSION1_4,
